@@ -8,46 +8,26 @@
 #include "Solver.hpp"
 #include "DynamicQueue.hpp"
 
-class BreadthFirstSolver: public Solver{
+class BreadthFirstSolver : public Solver {
 public:
-    LinkedList<GameState *> *solve(Game *game, GameState *g0) {
-        DynamicQueue<GameState *> q;
-        LinkedList<GameState *> visited;
+    LinkedList<GameState *> solve(Game &game, GameState &g0) {
+        DynamicQueue<GameState *> expanded;
 
-        q.enqueue(g0);
+        const time_t start = time(NULL);
+        expanded.enqueue(&g0);
+        while (!expanded.isEmpty()) {
+            GameState *currentGame = expanded.dequeue();
 
-        GameAction actions[4]{UP, DOWN, LEFT, RIGHT};
-
-        int depth = 0;
-
-        while (!q.isEmpty()) {
-            GameState *currentGame = q.dequeue();
-            if (*(game->getGoal()) == *currentGame) {
-                LinkedList<GameState *> *resultSteps = new LinkedList<GameState *>();
-
-                GameState *tmp = currentGame;
-                while (tmp != NULL) {
-                    resultSteps->insert(tmp);
-                    tmp = tmp->getParent();
-                }
-
-                return resultSteps;
+            if (*game.getGoal() == *currentGame) {
+                secondsToSolve = difftime(time(NULL), start);
+                return resultSteps(currentGame);
             }
 
-            for (int i = 0; i < 4; i++) {
-                GameAction currentAction = actions[i];
-                if (currentGame->isValid(actions[i])) {
-                    GameState *newState = new GameState(currentGame, actions[i]);
+            LinkedList<GameState *> children = visit(currentGame);
 
-                    // cout << "INDEX: " << visited.getIndex(newState)<<endl;
+            while (!children.isEmpty())
+                expanded.enqueue(children.remove(0));
 
-                    if (!visited.contains(newState))
-                        q.enqueue(newState);
-                    else delete newState;
-                }
-            }
-
-            visited.insert(currentGame);
         }
         throw invalid_argument("This game is unsolvable!");
     }

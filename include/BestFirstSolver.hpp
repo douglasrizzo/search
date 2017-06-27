@@ -5,6 +5,7 @@
 #ifndef BUSCA_BESTFIRSTSOLVER_HPP
 #define BUSCA_BESTFIRSTSOLVER_HPP
 
+#include <OrderedList.hpp>
 #include "Solver.hpp"
 #include "Heuristic.hpp"
 
@@ -12,7 +13,7 @@ class BestFirstSolver : public Solver {
 private:
     Heuristic *heuristic;
 public:
-    BestFirstSolver(Heuristic *h) {
+    explicit BestFirstSolver(Heuristic *h) {
         heuristic = h;
     }
 
@@ -20,52 +21,35 @@ public:
         delete heuristic;
     }
 
-    LinkedList<GameState *> *solve(Game *game, GameState *g0) {
-        LinkedList<GameState *> l;
-        LinkedList<GameState *> visited;
+    static int compare(GameState *a, GameState *b) {
+        Manhattan h;
+        if (h.calc(*a) < h.calc(*b))
+            return 1;
+        if (h.calc(*a) > h.calc(*b))
+            return -1;
+        return 0;
+    }
 
-        l.insert(g0);
+    LinkedList<GameState *> solve(Game &game, GameState &g0) {
+        OrderedList<GameState *> expanded = OrderedList<GameState *>(compare);
 
-        GameAction actions[4]{UP, DOWN, LEFT, RIGHT};
+        const time_t start = time(NULL);
+        expanded.insert(&g0);
+        while (!expanded.isEmpty()) {
+            GameState *currentGame = expanded.remove(0);
 
-        int depth = 0;
-
-        while (!l.isEmpty()) {
-            GameState *currentGame = l.get(0);
-            for (int i = 1; i < l.getSize(); i++) {
-                GameState *tmp = l.get(i);
-                if (heuristic->calc(tmp) < heuristic->calc(currentGame)) {
-                    currentGame = tmp;
-                }
+            if (*game.getGoal() == *currentGame) {
+                secondsToSolve = difftime(time(NULL), start);
+                return resultSteps(currentGame);
             }
 
-            if (*(game->getGoal()) == *currentGame) {
-                LinkedList<GameState *> *resultSteps = new LinkedList<GameState *>();
+            LinkedList<GameState *> children = visit(currentGame);
 
-                GameState *tmp = currentGame;
-                while (tmp != NULL) {
-                    resultSteps->insert(tmp);
-                    tmp = tmp->getParent();
-                }
-
-                return resultSteps;
+            while (!children.isEmpty()) {
+                expanded.insert(children.remove(0));
             }
-
-            for (int i = 0; i < 4; i++) {
-                GameAction currentAction = actions[i];
-                if (currentGame->isValid(actions[i])) {
-                    GameState *newState = new GameState(currentGame, actions[i]);
-
-                    // cout << "INDEX: " << visited.getIndex(newState)<<endl;
-
-                    if (!visited.contains(newState))
-                        l.insert(newState);
-                    else delete newState;
-                }
-            }
-
-            visited.insert(currentGame);
         }
+
         throw invalid_argument("This game is unsolvable!");
     }
 };

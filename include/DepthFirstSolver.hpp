@@ -13,44 +13,23 @@
 
 class DepthFirstSolver : public Solver {
 public:
-    LinkedList<GameState *> *solve(Game *game, GameState *g0) {
-        DynamicStack<GameState *> s;
-        LinkedList<GameState *> visited;
+    LinkedList<GameState *> solve(Game &game, GameState &g0) {
+        DynamicStack<GameState *> expanded;
 
-        s.push(g0);
+        const time_t start = time(NULL);
+        expanded.push(&g0);
+        while (!expanded.isEmpty()) {
+            GameState *currentGame = expanded.pop();
 
-        GameAction actions[4]{UP, DOWN, LEFT, RIGHT};
-
-        int depth = 0;
-
-        while (!s.isEmpty()) {
-            GameState *currentGame = s.pop();
-            if (*(game->getGoal()) == *currentGame) {
-                LinkedList<GameState *> *resultSteps = new LinkedList<GameState *>();
-
-                GameState *tmp = currentGame;
-                while (tmp != NULL) {
-                    resultSteps->insert(tmp);
-                    tmp = tmp->getParent();
-                }
-
-                return resultSteps;
+            if (*game.getGoal() == *currentGame) {
+                secondsToSolve = difftime(time(NULL), start);
+                return resultSteps(currentGame);
             }
 
-            for (int i = 0; i < 4; i++) {
-                GameAction currentAction = actions[i];
-                if (currentGame->isValid(actions[i])) {
-                    GameState *newState = new GameState(currentGame, actions[i]);
+            LinkedList<GameState *> children = visit(currentGame);
 
-                    // cout << "INDEX: " << visited.getIndex(newState)<<endl;
-
-                    if (!visited.contains(newState))
-                        s.push(newState);
-                    else delete newState;
-                }
-            }
-
-            visited.insert(currentGame);
+            while (!children.isEmpty())
+                expanded.push(children.remove(0));
         }
         throw invalid_argument("This game is unsolvable!");
     }
