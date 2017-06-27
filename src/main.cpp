@@ -3,6 +3,7 @@
 #include <thread>
 #include <AStarSolver.hpp>
 #include <random>
+#include <BestFirstSolver.hpp>
 
 int testGoalCreation() {
     Game game = Game(3);
@@ -20,7 +21,7 @@ int testStateTransitions() {
         cout << gs.to_string() << endl;
 
         for (int i = 0; i < 100; i++) {
-            GameState gs2 = GameState(gs, RIGHT);
+            GameState gs2 = GameState(&gs, RIGHT);
             gs = gs2;
             cout << gs.to_string() << endl;
         }
@@ -36,13 +37,13 @@ void testEquality() {
             gs4 = GameState("0 1 3 2 4 8 6 7 5");
 
     cout << (gs1 == gs2) << (gs1 == gs3) << (gs1 == gs4) <<
-             (gs2 == gs3) << (gs2 == gs4) << (gs3 == gs4);
+         (gs2 == gs3) << (gs2 == gs4) << (gs3 == gs4);
 }
 
 LinkedList<string> *getPuzzles() {
     LinkedList<string> *puzzles = new LinkedList<string>();
     string line;
-    ifstream myfile("../inputs");
+    ifstream myfile("inputs");
     if (myfile.is_open()) {
         while (getline(myfile, line)) {
             puzzles->insert(line);
@@ -68,21 +69,30 @@ int testStateFromFile() {
 }
 
 int testSolver() {
-    mt19937_64 orelha;
-    time_t result = time(nullptr);
-    orelha.seed((unsigned long) std::localtime(&result));
+//    mt19937_64 orelha;
+//    time_t result = time(nullptr);
+//    orelha.seed((unsigned long) std::localtime(&result));
 
     LinkedList<string> *puzzles = getPuzzles();
-    int chosen_one = abs((int) orelha() % puzzles->getSize());
+    int chosen_one = 0;
+//    int chosen_one = abs((int) orelha() % puzzles->getSize());
 
     Game game = Game(3);
-    GameState gs = GameState(puzzles->get(chosen_one));
-    LinkedList<GameState> *results = AStarSolver(new Manhattan()).solve(game, gs);
+//    GameState gs = GameState(puzzles->get(chosen_one));
+    GameState gs = GameState("2 0 4 8 6 5 7 3 1");
 
-    for (int i = results->getSize() - 1; i >= 0; i--)
-        cout << results->get(i).to_string() << endl;
+    AStarSolver solver = AStarSolver(new Manhattan());
+//    BestFirstSolver solver = BestFirstSolver(new Manhattan());
+//    BreadthFirstSolver solver;
 
-        delete puzzles;
+    LinkedList<GameState *> results = solver.solve(game, gs);
+
+    while (!results.isEmpty())
+        cout << results.remove(results.getSize() - 1)->to_string() << endl;
+
+    cout << solver.to_string();
+
+    delete puzzles;
     return 0;
 }
 
@@ -94,16 +104,16 @@ int testSolverMulti() {
     while (!puzzles->isEmpty()) {
         cout << ++count;
         GameState gs = GameState(puzzles->remove(0));
-        LinkedList<GameState> *results = AStarSolver(new Manhattan()).solve(game, gs);
-
-        delete results;
+        BestFirstSolver solver = BestFirstSolver(new Manhattan());
+        LinkedList<GameState *> results = solver.solve(game, gs);
+        cout << solver.to_string();
     }
-    delete[]puzzles;
+    delete puzzles;
     return 0;
 }
 
 int main() {
-//     testEquality();
+//    testEquality();
 //    testGoalCreation();
 //    testStateTransitions();
 //    testStateFromFile();
