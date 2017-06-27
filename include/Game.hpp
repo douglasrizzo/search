@@ -45,7 +45,7 @@ public:
         delete goal;
     }
 
-    Game(int dimension) {
+    explicit Game(int dimension) {
         goal = new GameState();
 
         this->dimension = dimension;

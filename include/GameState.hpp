@@ -122,19 +122,19 @@ public:
 
         switch (action) {
             case RIGHT:
-                tmp = previous.getRepresentation()[x + 1][y];
+                tmp = previous->representation[x + 1][y];
                 representation[x + 1][y] = 0;
                 break;
             case LEFT:
-                tmp = previous.getRepresentation()[x - 1][y];
+                tmp = previous->representation[x - 1][y];
                 representation[x - 1][y] = 0;
                 break;
             case UP:
-                tmp = previous.getRepresentation()[x][y - 1];
+                tmp = previous->representation[x][y - 1];
                 representation[x][y - 1] = 0;
                 break;
             case DOWN:
-                tmp = previous.getRepresentation()[x][y + 1];
+                tmp = previous->representation[x][y + 1];
                 representation[x][y + 1] = 0;
                 break;
         }
@@ -147,6 +147,10 @@ public:
     }
 
     bool isValid(GameAction action) {
+
+        if (action != RIGHT and action != LEFT and action != UP and action != DOWN)
+            return false;
+
         int *pos_0 = find(0);
         int x = pos_0[0], y = pos_0[1];
         int dimension = getDimension();
@@ -163,10 +167,11 @@ public:
         if (lhs.getDimension() != rhs.getDimension())
             return false;
 
-        int dimension = sizeof(rhs.getRepresentation()) / sizeof(rhs.getRepresentation()[0]) + 1;
+        int dimension = sizeof(rhs.representation[0]) / sizeof(rhs.getRepresentation()[0][0]) + 1;
         for (int x = 0; x < dimension; x++) {
             for (int y = 0; y < dimension; y++) {
-                if (rhs.getRepresentation()[x][y] != lhs.getRepresentation()[x][y])return false;
+                if (rhs.representation[x][y] != lhs.representation[x][y])
+                    return false;
             }
         }
         return true;
