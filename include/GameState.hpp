@@ -143,11 +143,6 @@ public:
     }
 
     ~GameState() {
-        int dimension = getDimension();
-        for (int y = 0; y < dimension; y++) {
-            delete[] representation[y];
-        }
-
         delete[] representation;
     }
 
