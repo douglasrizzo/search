@@ -45,10 +45,13 @@ private:
 public:
     GameState() {
         depth = 0;
+        representation = NULL;
+        parent = NULL;
     }
 
-    GameState(string s) {
+    explicit GameState(string s) {
         depth = 0;
+        parent = NULL;
         int *conversion = toIntArray(s);
 
         int dimension = sizeof(conversion) / sizeof(conversion[0]) + 1;
@@ -78,37 +81,39 @@ public:
 
     GameState(const GameState &obj) {
         int dimension = obj.getDimension();
+        depth = obj.depth;
 
-        representation = new int *[dimension];
-        for (int x = 0; x < dimension; x++) {
-            representation[x] = new int[dimension];
-            representation[x] = obj.representation[x];
-        }
-
-        *representation = *obj.representation; // copy the value
-
-        parent = obj.parent;
-    }
-
-    GameState(GameState previous, GameAction action) {
-        int dimension = getDimension();
-        depth = previous.depth + 1;
-        *parent = previous;
         representation = new int *[dimension];
 
         for (int x = 0; x < dimension; x++) {
             representation[x] = new int[dimension];
             for (int y = 0; y < dimension; y++) {
-                representation[x][y] = previous.getRepresentation()[x][y];
+                representation[x][y] = obj.representation[x][y];
+            }
+        }
+
+        parent = obj.parent;
+    }
+
+    GameState(GameState *previous, GameAction action) {
+        int dimension = getDimension();
+        depth = previous->depth + 1;
+        parent = previous;
+        representation = new int *[dimension];
+
+        for (int x = 0; x < dimension; x++) {
+            representation[x] = new int[dimension];
+            for (int y = 0; y < dimension; y++) {
+                representation[x][y] = previous->representation[x][y];
             }
         }
 
         int *pos_0 = find(0);
         int x = pos_0[0], y = pos_0[1];
         delete[] pos_0;
-        int tmp;
+        int tmp = 0;
 
-        if (action == NULL)
+        if (action != RIGHT and action != LEFT and action != UP and action != DOWN)
             throw invalid_argument("No previous action to build the new GameState.");
 
         if (!isValid(action)) {
