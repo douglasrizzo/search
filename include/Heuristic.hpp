@@ -9,7 +9,7 @@
 
 class Heuristic {
 public:
-    virtual int calc(GameState &currentState)=0;
+    virtual int calc(GameState &currentState) =0;
 };
 
 class Manhattan : public Heuristic {

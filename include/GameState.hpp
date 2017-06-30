@@ -177,26 +177,6 @@ public:
         return true;
     }
 
-//    bool operator==(const GameState &other) const {
-//        if (getDimension() != other.getDimension())
-//            return false;
-//
-//        string one = to_line_string();
-//        string two = other.to_line_string();
-//
-//        if (to_line_string().compare(other.to_line_string()) == 0) {
-//            cout << "";
-//        }
-//
-//        int dimension = sizeof(getRepresentation()) / sizeof(getRepresentation()[0]) + 1;
-//        for (int x = 0; x < dimension; x++) {
-//            for (int y = 0; y < dimension; y++) {
-//                if (getRepresentation()[x][y] != other.getRepresentation()[x][y])return false;
-//            }
-//        }
-//        return true;
-//    }
-
     int getDimension() const {
         return sizeof(representation[0]) / sizeof(representation[0][0]) + 1;
     }
@@ -250,17 +230,9 @@ public:
         return parent;
     }
 
-    void setParent(GameState *parent) {
-        GameState::parent = parent;
-    }
-
     int getDepth() const {
         return depth;
     }
 };
-
-//bool operator==(const GameState &L, const GameState &R) {
-//    return L.to_line_string().compare(R.to_line_string()) == 0;
-//}
 
 #endif //BUSCA_GAMESTATE_HPP

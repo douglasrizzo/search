@@ -6,5 +6,5 @@ set(CMAKE_BUILD_TYPE Debug)
 
 include_directories(include ../data_structures/include)
 
-set(SOURCE_FILES src/main.cpp include/Solver.hpp include/GameState.hpp include/Game.hpp include/GameAction.hpp include/Heuristic.hpp include/DepthFirstSolver.hpp include/BreadthFirstSolver.hpp include/BestFirstSolver.hpp)
+set(SOURCE_FILES src/main.cpp include/Solver.hpp include/GameState.hpp include/Game.hpp include/GameAction.hpp include/Heuristic.hpp include/DepthFirstSolver.hpp include/BreadthFirstSolver.hpp include/GreedySolver.hpp include/HillClimbingSolver.hpp)
 add_executable(search ${SOURCE_FILES})
