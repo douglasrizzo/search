@@ -16,14 +16,13 @@ public:
     LinkedList<GameState *> solve(Game &game, GameState &g0) {
         DynamicStack<GameState *> expanded;
 
-        const time_t start = time(NULL);
+        const clock_t start = clock();
         expanded.push(&g0);
         while (!expanded.isEmpty()) {
             GameState *currentGame = expanded.pop();
 
             if (*game.getGoal() == *currentGame) {
-                secondsToSolve = difftime(time(NULL), start);
-                return resultSteps(currentGame);
+                return endSearch(currentGame, start);
             }
 
             LinkedList<GameState *> children = visit(currentGame);

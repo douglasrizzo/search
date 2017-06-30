@@ -13,21 +13,19 @@ public:
     LinkedList<GameState *> solve(Game &game, GameState &g0) {
         DynamicQueue<GameState *> expanded;
 
-        const time_t start = time(NULL);
+        const clock_t start = clock();
         expanded.enqueue(&g0);
         while (!expanded.isEmpty()) {
             GameState *currentGame = expanded.dequeue();
 
             if (*game.getGoal() == *currentGame) {
-                secondsToSolve = difftime(time(NULL), start);
-                return resultSteps(currentGame);
+                return endSearch(currentGame, start);
             }
 
-            LinkedList<GameState *> children = visit(currentGame);
+                LinkedList<GameState *> children = visit(currentGame);
 
             while (!children.isEmpty())
                 expanded.enqueue(children.remove(0));
-
         }
         throw invalid_argument("This game is unsolvable!");
     }
