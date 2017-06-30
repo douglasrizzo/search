@@ -12,7 +12,18 @@
 #include "Heuristic.hpp"
 
 class DepthFirstSolver : public Solver {
+private:
+    int maxDepth;
 public:
+
+    DepthFirstSolver() {
+        maxDepth = -1;
+    }
+
+    explicit DepthFirstSolver(int maxDepth) {
+        this->maxDepth = maxDepth > -1 ? maxDepth : -1;
+    }
+
     LinkedList<GameState *> solve(Game &game, GameState &g0) {
         DynamicStack<GameState *> expanded;
 
@@ -27,8 +38,12 @@ public:
 
             LinkedList<GameState *> children = visit(currentGame);
 
-            while (!children.isEmpty())
-                expanded.push(children.remove(0));
+            while (!children.isEmpty()) {
+                GameState *child = children.remove(0);
+
+                if (maxDepth == -1 or child->getDepth() <= maxDepth)
+                    expanded.push(child);
+            }
         }
         throw invalid_argument("This game is unsolvable!");
     }
