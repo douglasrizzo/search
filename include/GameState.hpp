@@ -17,7 +17,7 @@ using namespace std;
 class GameState {
 private:
     int **representation;
-    int depth;
+    int depth, dimension;
     GameState *parent;
 
     int *toIntArray(string s) {
@@ -44,7 +44,7 @@ private:
 
 public:
     GameState() {
-        depth = 0;
+        depth = dimension = 0;
         representation = NULL;
         parent = NULL;
     }
@@ -54,7 +54,7 @@ public:
         parent = NULL;
         int *conversion = toIntArray(s);
 
-        int dimension = sizeof(conversion) / sizeof(conversion[0]) + 1;
+        dimension = sizeof(conversion) / sizeof(conversion[0]) + 1;
 
         for (int i = 0; i < dimension * dimension - 1; i++) {
             for (int j = i + 1; j < dimension * dimension; j++) {
@@ -71,8 +71,7 @@ public:
         for (int x = 0; x < dimension; x++) {
             representation[x] = new int[dimension];
             for (int y = 0; y < dimension; y++) {
-                int insercao = conversion[val++];
-                representation[x][y] = insercao;
+                representation[x][y] = conversion[val++];
             }
         }
 
@@ -80,7 +79,7 @@ public:
     }
 
     GameState(const GameState &obj) {
-        int dimension = obj.getDimension();
+        dimension = obj.dimension;
         depth = obj.depth;
 
         representation = new int *[dimension];
@@ -96,7 +95,7 @@ public:
     }
 
     GameState(GameState *previous, GameAction action) {
-        int dimension = getDimension();
+        dimension = previous->dimension;
         depth = previous->depth + 1;
         parent = previous;
         representation = new int *[dimension];
@@ -147,13 +146,11 @@ public:
     }
 
     bool isValid(GameAction action) {
-
         if (action != RIGHT and action != LEFT and action != UP and action != DOWN)
             return false;
 
         int *pos_0 = find(0);
         int x = pos_0[0], y = pos_0[1];
-        int dimension = getDimension();
 
         delete[] pos_0;
 
@@ -163,14 +160,13 @@ public:
                  action == DOWN and y == dimension - 1);
     }
 
-    friend bool operator==(GameState &lhs, GameState &rhs) {
-        if (lhs.getDimension() != rhs.getDimension())
+    bool operator==(const GameState &other) const {
+        if (dimension != other.dimension)
             return false;
 
-        int dimension = sizeof(rhs.representation[0]) / sizeof(rhs.getRepresentation()[0][0]) + 1;
         for (int x = 0; x < dimension; x++) {
             for (int y = 0; y < dimension; y++) {
-                if (rhs.representation[x][y] != lhs.representation[x][y])
+                if (representation[x][y] != other.representation[x][y])
                     return false;
             }
         }
@@ -178,16 +174,15 @@ public:
     }
 
     int getDimension() const {
-        return sizeof(representation[0]) / sizeof(representation[0][0]) + 1;
+        return dimension;
     }
 
     string to_string() const {
         string tmp = "";
-        int dimension = getDimension();
 
         for (int x = 0; x < dimension; x++) {
             for (int y = 0; y < dimension; y++) {
-                tmp.append(std::to_string(representation[x][y])).append("\t");
+                tmp.append(std::to_string(representation[x][y])).append(" ");
             }
             tmp.append("\n");
         }
@@ -196,7 +191,6 @@ public:
 
     string to_line_string() const {
         string tmp = "";
-        int dimension = getDimension();
 
         for (int x = 0; x < dimension; x++) {
             for (int y = 0; y < dimension; y++) {
@@ -207,7 +201,6 @@ public:
     }
 
     int *find(int value) {
-        int dimension = getDimension();
         for (int x = 0; x < dimension; x++) {
             for (int y = 0; y < dimension; y++) {
                 if (representation[x][y] == value)
@@ -218,12 +211,9 @@ public:
         return NULL;
     }
 
-    int **getRepresentation() const {
-        return representation;
-    }
-
     void setRepresentation(int **representation) {
         this->representation = representation;
+        dimension = sizeof(representation[0]) / sizeof(representation[0][0]) + 1;
     }
 
     GameState *getParent() const {
