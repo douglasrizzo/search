@@ -5,7 +5,9 @@
 #ifndef BUSCA_SOLVER_HPP
 #define BUSCA_SOLVER_HPP
 
+#include <time.h>
 #include <LinkedList.hpp>
+#include <OrderedList.hpp>
 #include "GameState.hpp"
 #include "Game.hpp"
 
@@ -13,7 +15,43 @@ class Solver {
 protected:
     LinkedList<GameState *> visited;
     int visitedNodes, maxDepth, solutionDepth;
-    double secondsToSolve;
+    float secondsToSolve;
+
+    bool isVisited(GameState &g) {
+        Iterator<GameState *> iter = visited.iterator();
+        while (iter.hasNext()) {
+            if (*iter.next() == g) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    LinkedList<GameState *> visit(GameState *current) {
+        LinkedList<GameState *> retornus;
+        GameAction actions[4]{RIGHT, DOWN, LEFT, UP};
+
+        visited.insert(current);
+        if (current->getDepth() > maxDepth)
+            maxDepth = current->getDepth();
+
+        for (int i = 0; i < 4; i++) {
+            if (current->isValid(actions[i])) {
+                GameState *newState = new GameState(current, actions[i]);
+                if (!isVisited(*newState))
+                    retornus.insert(newState);
+                else
+                    delete newState;
+            }
+        }
+
+        if (retornus.getSize() == 4 && current->getDepth() > 0) {
+            throw invalid_argument("Duplicate states being visited.");
+        }
+
+        return retornus;
+    }
+
 public:
 
     double getSecondsToSolve() const {
@@ -39,17 +77,18 @@ public:
 
     virtual LinkedList<GameState *> solve(Game &, GameState &)=0;
 
-    bool isVisited(GameState &g) {
-        for (int i = 0; i < visited.getSize(); i++) {
-            GameState tmp = *visited.get(i);
-            if (tmp == g) {
-                return true;
-            }
-        }
-        return false;
+    string to_string() {
+        return string(
+                "\t\t\t\tSeconds: ").append(std::to_string(getSecondsToSolve())).append(
+                "\n\t\t Solution depth: ").append(
+                std::to_string(getSolutionDepth())).append("\n\t Max depth explored: ").append(
+                std::to_string(getMaxDepth())).append("\nNumber of visited nodes: ").append(
+                std::to_string(getVisitedNodes())).append("\n");
     }
 
-    LinkedList<GameState *> resultSteps(GameState *currentGame) {
+    LinkedList<GameState *> endSearch(GameState *currentGame, const clock_t start) {
+        secondsToSolve = float(clock() - start) / CLOCKS_PER_SEC;
+
         LinkedList<GameState *> resultSteps;
 
         GameState *tmp = currentGame;
@@ -62,36 +101,6 @@ public:
         }
 
         return resultSteps;
-    }
-
-    LinkedList<GameState *> visit(GameState *current) {
-        LinkedList<GameState *> retornus;
-        GameAction actions[4]{UP, DOWN, LEFT, RIGHT};
-
-        visited.insert(current);
-
-        if (current->getDepth() > maxDepth)
-            maxDepth = current->getDepth();
-
-        for (int i = 0; i < 4; i++) {
-            if (current->isValid(actions[i])) {
-                GameState *newState = new GameState(current, actions[i]);
-                if (!isVisited(*newState))
-                    retornus.insert(newState);
-                else
-                    delete newState;
-            }
-        }
-        return retornus;
-    }
-
-    string to_string() {
-        return string(
-                "\t\t\t\tSeconds: ").append(std::to_string(getSecondsToSolve())).append(
-                "\n\t\t Solution depth: ").append(
-                std::to_string(getSolutionDepth())).append("\n\t Max depth explored: ").append(
-                std::to_string(getMaxDepth())).append("\nNumber of visited nodes: ").append(
-                std::to_string(getVisitedNodes())).append("\n");
     }
 };
 
