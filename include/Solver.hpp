@@ -1,6 +1,8 @@
-//
-// Created by dodo on 22/06/17.
-//
+/**
+ * @author Douglas De Rizzo Meneghetti (douglasrizzom@gmail.com)
+ * @date   2017-6-22
+ * @brief  Base class for all 8-puzzle solvers.
+ */
 
 #ifndef SEARCH_SOLVER_HPP
 #define SEARCH_SOLVER_HPP
@@ -10,7 +12,7 @@
 #include "GameState.hpp"
 #include "Game.hpp"
 
-// !Base class for all 8-puzzle solvers
+// !Base class for all 8-puzzle solvers.
 class Solver {
 protected:
 
