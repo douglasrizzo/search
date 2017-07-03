@@ -46,3 +46,6 @@ bin
 # Project folders and files
 .idea
 *.cbp
+
+# Docs in LaTeX are not uploaded
+docs/latex
