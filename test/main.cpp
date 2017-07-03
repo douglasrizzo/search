@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <random>
+#include <ctime>
 #include "AStarSolver.hpp"
 #include "DepthFirstSolver.hpp"
 #include "BreadthFirstSolver.hpp"
