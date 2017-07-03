@@ -2,8 +2,8 @@
 // Created by dodo on 22/06/17.
 //
 
-#ifndef BUSCA_GAME_HPP
-#define BUSCA_GAME_HPP
+#ifndef SEARCH_GAME_HPP
+#define SEARCH_GAME_HPP
 
 #include "GameState.hpp"
 #include "GameAction.hpp"

@@ -2,8 +2,8 @@
 // Created by dodo on 24/06/17.
 //
 
-#ifndef BUSCA_ASTARSOLVER_HPP
-#define BUSCA_ASTARSOLVER_HPP
+#ifndef SEARCH_ASTARSOLVER_HPP
+#define SEARCH_ASTARSOLVER_HPP
 
 #include "Solver.hpp"
 #include "Heuristic.hpp"

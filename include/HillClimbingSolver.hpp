@@ -2,8 +2,8 @@
 // Created by dodo on 24/06/17.
 //
 
-#ifndef BUSCA_HILLCLINBINGSOLVER_HPP
-#define BUSCA_HILLCLINBINGSOLVER_HPP
+#ifndef SEARCH_HILLCLIMBINGSOLVER_HPP
+#define SEARCH_HILLCLIMBINGSOLVER_HPP
 
 #include <OrderedList.hpp>
 #include "Solver.hpp"

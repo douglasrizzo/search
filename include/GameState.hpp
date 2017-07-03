@@ -2,13 +2,10 @@
 // Created by dodo on 22/06/17.
 //
 
-#ifndef BUSCA_GAMESTATE_HPP
-#define BUSCA_GAMESTATE_HPP
+#ifndef SEARCH_GAMESTATE_HPP
+#define SEARCH_GAMESTATE_HPP
 
-#include <cstring>
 #include <string>
-#include <math.h>
-#include <algorithm>
 #include <iostream>
 #include "GameAction.hpp"
 

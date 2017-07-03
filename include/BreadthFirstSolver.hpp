@@ -2,8 +2,8 @@
 // Created by dodo on 24/06/17.
 //
 
-#ifndef BUSCA_BREADTHFIRSTSOLVER_HPP
-#define BUSCA_BREADTHFIRSTSOLVER_HPP
+#ifndef SEARCH_BREADTHFIRSTSOLVER_HPP
+#define SEARCH_BREADTHFIRSTSOLVER_HPP
 
 #include "Solver.hpp"
 #include "DynamicQueue.hpp"

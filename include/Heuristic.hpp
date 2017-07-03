@@ -2,8 +2,8 @@
 // Created by dodo on 23/06/17.
 //
 
-#ifndef BUSCA_HEURISTIC_HPP
-#define BUSCA_HEURISTIC_HPP
+#ifndef SEARCH_HEURISTIC_HPP
+#define SEARCH_HEURISTIC_HPP
 
 #include "Game.hpp"
 

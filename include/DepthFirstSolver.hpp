@@ -2,14 +2,13 @@
 // Created by dodo on 23/06/17.
 //
 
-#ifndef BUSCA_DEPTHFIRSTSOLVER_HPP
-#define BUSCA_DEPTHFIRSTSOLVER_HPP
+#ifndef SEARCH_DEPTHFIRSTSOLVER_HPP
+#define SEARCH_DEPTHFIRSTSOLVER_HPP
 
 #include <LinkedList.hpp>
 #include <DynamicStack.hpp>
 #include "Solver.hpp"
 #include "GameAction.hpp"
-#include "Heuristic.hpp"
 
 class DepthFirstSolver : public Solver {
 private:

@@ -2,8 +2,8 @@
 // Created by dodo on 24/06/17.
 //
 
-#ifndef BUSCA_GREEDYSOLVER_HPP
-#define BUSCA_GREEDYSOLVER_HPP
+#ifndef SEARCH_GREEDYSOLVER_HPP
+#define SEARCH_GREEDYSOLVER_HPP
 
 #include <OrderedList.hpp>
 #include "Solver.hpp"

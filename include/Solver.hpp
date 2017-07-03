@@ -2,12 +2,11 @@
 // Created by dodo on 22/06/17.
 //
 
-#ifndef BUSCA_SOLVER_HPP
-#define BUSCA_SOLVER_HPP
+#ifndef SEARCH_SOLVER_HPP
+#define SEARCH_SOLVER_HPP
 
 #include <time.h>
 #include <LinkedList.hpp>
-#include <OrderedList.hpp>
 #include "GameState.hpp"
 #include "Game.hpp"
 
