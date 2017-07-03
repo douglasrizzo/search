@@ -1,6 +1,9 @@
-//
-// Created by dodo on 22/06/17.
-//
+/**
+ * @author Douglas De Rizzo Meneghetti (douglasrizzom@gmail.com)
+ * @date   2017-6-22
+ * @brief  Describes a single state in the 8-puzzle.
+ */
+
 
 #ifndef SEARCH_GAMESTATE_HPP
 #define SEARCH_GAMESTATE_HPP
@@ -11,7 +14,7 @@
 
 using namespace std;
 
-//!Describes a single state in the 8-puzzle
+//!Describes a single state in the 8-puzzle.
 class GameState {
  private:
 

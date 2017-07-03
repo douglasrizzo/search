@@ -1,6 +1,8 @@
-//
-// Created by dodo on 22/06/17.
-//
+/**
+ * @author Douglas De Rizzo Meneghetti (douglasrizzom@gmail.com)
+ * @date   2017-6-22
+ * @brief  Class representing the rules of a game.
+ */
 
 #ifndef SEARCH_GAME_HPP
 #define SEARCH_GAME_HPP

@@ -1,13 +1,15 @@
-//
-// Created by dodo on 23/06/17.
-//
+/**
+ * @author Douglas De Rizzo Meneghetti (douglasrizzom@gmail.com)
+ * @date   2017-6-22
+ * @brief  Abtract class for heuristic functions.
+ */
 
 #ifndef SEARCH_HEURISTIC_HPP
 #define SEARCH_HEURISTIC_HPP
 
 #include "Game.hpp"
 
-//!Abtract class for heuristic functions
+//!Abtract class for heuristic functions.
 class Heuristic {
  public:
 

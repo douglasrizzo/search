@@ -1,6 +1,8 @@
-//
-// Created by dodo on 24/06/17.
-//
+/**
+ * @author Douglas De Rizzo Meneghetti (douglasrizzom@gmail.com)
+ * @date   2017-6-26
+ * @brief  Implementation of a hill-climbing optimization algorithm for the 8-puzzle.
+ */
 
 #ifndef SEARCH_HILLCLIMBINGSOLVER_HPP
 #define SEARCH_HILLCLIMBINGSOLVER_HPP

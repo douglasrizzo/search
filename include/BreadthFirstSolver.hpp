@@ -1,6 +1,8 @@
-//
-// Created by dodo on 24/06/17.
-//
+/**
+ * @author Douglas De Rizzo Meneghetti (douglasrizzom@gmail.com)
+ * @date   2017-6-23
+ * @brief  8-puzzle exploration based on a breadth-first search strategy
+ */
 
 #ifndef SEARCH_BREADTHFIRSTSOLVER_HPP
 #define SEARCH_BREADTHFIRSTSOLVER_HPP

@@ -1,6 +1,8 @@
-//
-// Created by dodo on 24/06/17.
-//
+/**
+ * @author Douglas De Rizzo Meneghetti (douglasrizzom@gmail.com)
+ * @date   2017-6-24
+ * @brief  Implementation of a greedy exploration algorithm for the 8-puzzle game.
+ */
 
 #ifndef SEARCH_GREEDYSOLVER_HPP
 #define SEARCH_GREEDYSOLVER_HPP

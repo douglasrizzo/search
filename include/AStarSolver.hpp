@@ -1,6 +1,8 @@
-//
-// Created by dodo on 24/06/17.
-//
+/**
+ * @author Douglas De Rizzo Meneghetti (douglasrizzom@gmail.com)
+ * @date   2017-6-24
+ * @brief  8-puzzle exploration based on the A* search algorithm
+ */
 
 #ifndef SEARCH_ASTARSOLVER_HPP
 #define SEARCH_ASTARSOLVER_HPP
