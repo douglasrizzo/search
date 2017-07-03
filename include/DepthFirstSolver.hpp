@@ -10,42 +10,56 @@
 #include "Solver.hpp"
 #include "GameAction.hpp"
 
+//! 8-puzzle exploration based on a depth-first search strategy
 class DepthFirstSolver : public Solver {
-private:
-    int maxDepth;
-public:
+ private:
 
-    DepthFirstSolver() {
-        maxDepth = -1;
-    }
+  int maxDepth;
 
-    explicit DepthFirstSolver(int maxDepth) {
-        this->maxDepth = maxDepth > -1 ? maxDepth : -1;
-    }
+ public:
 
-    LinkedList<GameState *> solve(Game &game, GameState &g0) {
-        DynamicStack<GameState *> expanded;
+  DepthFirstSolver() {
+    // no limits in depth
+    maxDepth = -1;
+  }
 
-        const clock_t start = clock();
-        expanded.push(&g0);
-        while (!expanded.isEmpty()) {
-            GameState *currentGame = expanded.pop();
+  //! \param maxDepth the maximum depth allowed for exploration
+  explicit DepthFirstSolver(int maxDepth) {
+    this->maxDepth = maxDepth > -1 ? maxDepth : -1;
+  }
 
-            if (*game.getGoal() == *currentGame) {
-                return endSearch(currentGame, start);
-            }
+  LinkedList<GameState *> solve(Game &game, GameState &g0) {
+    // use a stack to organize states, states that were reached last will be the first ones to be evaluated
+    DynamicStack<GameState *> expanded;
 
-            LinkedList<GameState *> children = visit(currentGame);
+    const clock_t start = clock();
+    expanded.push(&g0);
+    int currentMaxDepth = 0;
 
-            while (!children.isEmpty()) {
-                GameState *child = children.remove(0);
+    while (!expanded.isEmpty()) {
+      GameState *currentGame = expanded.pop();
 
-                if (maxDepth == -1 or child->getDepth() <= maxDepth)
-                    expanded.push(child);
-            }
+      if (currentGame->getDepth() > currentMaxDepth) {
+        currentMaxDepth = currentGame->getDepth();
+      }
+
+      cout << currentGame->getDepth() << '\t' << visited.getSize() << '\t' << expanded.getSize() << endl;
+
+      // check for goal
+      if (*game.getGoal()==*currentGame) {
+        return endSearch(currentGame, start);
+      }
+
+      //expand children, but check the maximum allowed depth before inserting them in the exploration stack
+      LinkedList<GameState *> children = visit(currentGame);
+      if (maxDepth==-1 || currentGame->getDepth() < maxDepth) {
+        while (!children.isEmpty()) {
+          expanded.push(children.remove(0));
         }
-        throw invalid_argument("This game is unsolvable!");
+      }
     }
+    throw invalid_argument("This game is unsolvable!");
+  }
 };
 
-#endif //BUSCA_DEPTHFIRSTSOLVER_HPP
+#endif // SEARCH_DEPTHFIRSTSOLVER_HPP
