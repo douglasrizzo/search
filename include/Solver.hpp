@@ -9,15 +9,22 @@
 
 #include <time.h>
 #include <LinkedList.hpp>
+#include <OrderedList.hpp>
 #include "GameState.hpp"
 #include "Game.hpp"
 
 // !Base class for all 8-puzzle solvers.
 class Solver {
+private:
+
+  static int compare(GameState *a, GameState *b) {
+    return *a < *b;
+  }
+
 protected:
 
   // linked list to keep visited states
-  LinkedList<GameState *>visited;
+  OrderedList<GameState *>visited = OrderedList<GameState *>(compare);
 
   // other values to keep as statistics of the solve
   int visitedNodes, maxDepth, solutionDepth;
@@ -27,16 +34,7 @@ protected:
   // ! \param g The state to look for
   // ! \return true if g has been visited, otherwise false
   bool isVisited(GameState& g) {
-    // use an Iterator to traverse the LinkedList without starting from scratch
-    // every time
-    Iterator<GameState *> iter = visited.iterator();
-
-    while (iter.hasNext()) {
-      if (*iter.next() == g) {
-        return true;
-      }
-    }
-    return false;
+    return visited.contains(&g);
   }
 
   // ! Visit a game state, adding it to the list of visited states and returning
@@ -92,7 +90,10 @@ protected:
 
     GameState *tmp = currentGame;
     solutionDepth = currentGame->getDepth();
-    visitedNodes  = visited.getSize();
+
+    // memoryless process don't work with a list of visited nodes, they
+    // increment this variable on the fly
+    visitedNodes = visitedNodes != 0 ? visitedNodes : visited.getSize();
 
     while (tmp != NULL) {
       resultSteps.insert(tmp, resultSteps.getSize());
@@ -121,7 +122,7 @@ public:
   }
 
   Solver() {
-    visited        = LinkedList<GameState *>();
+    visited        = OrderedList<GameState *>(compare);
     secondsToSolve = visitedNodes = maxDepth = solutionDepth = 0;
   }
 

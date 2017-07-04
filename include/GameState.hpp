@@ -223,6 +223,21 @@ class GameState {
     return true;
   }
 
+  //! Compares two GameState objects. Tile numbers are compared in order. If this[i,j] < other[i,j], this < other.
+  //! This operator is useful in case objects need to be sorted inside a data structure, for example.
+  //! \param other The GameState to be compared to
+  //! \return true if this < other, otherwise false
+  bool operator<(const GameState &other) const {
+    if (dimension!=other.dimension) throw invalid_argument("Puzzles of different dimensions aren't comparable");
+
+    for (int x = 0; x < dimension; x++) {
+      for (int y = 0; y < dimension; y++) {
+        if (representation[x][y] < other.representation[x][y]) return true;
+      }
+    }
+    return false;
+  }
+
   //! Inequality operator for GameState. This is the negation of the equality operator.
   //! \param other The GameState to be compared to
   //! \return false if equal, otherwise true
