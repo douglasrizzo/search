@@ -14,23 +14,23 @@
 
 // ! 8-puzzle exploration based on a depth-first search strategy
 class DepthFirstSolver : public Solver {
-private:
+ private:
 
   int maxDepth;
 
-public:
+ public:
 
   DepthFirstSolver() {
     // no limits in depth
-    maxDepth = -1;
+    maxDepth = - 1;
   }
 
   // ! \param maxDepth the maximum depth allowed for exploration
   explicit DepthFirstSolver(int maxDepth) {
-    this->maxDepth = maxDepth > -1 ? maxDepth : -1;
+    this->maxDepth = maxDepth > - 1 ? maxDepth : - 1;
   }
 
-  LinkedList<GameState *>solve(Game& game, GameState& g0) {
+  LinkedList<GameState *> solve(Game &game, GameState &g0) {
     // use a stack to organize states, states that were reached last will be the
     // first ones to be evaluated
     DynamicStack<GameState *> expanded;
@@ -39,7 +39,7 @@ public:
     expanded.push(&g0);
     int currentMaxDepth = 0;
 
-    while (!expanded.isEmpty()) {
+    while (! expanded.isEmpty()) {
       GameState *currentGame = expanded.pop();
 
       if (currentGame->getDepth() > currentMaxDepth) {
@@ -57,8 +57,8 @@ public:
       // them in the exploration stack
       LinkedList<GameState *> children = visit(currentGame);
 
-      if ((maxDepth == -1) || (currentGame->getDepth() < maxDepth)) {
-        while (!children.isEmpty()) {
+      if ((maxDepth == - 1) || (currentGame->getDepth() < maxDepth)) {
+        while (! children.isEmpty()) {
           expanded.push(children.remove(0));
         }
       }

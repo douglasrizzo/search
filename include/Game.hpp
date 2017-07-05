@@ -31,11 +31,11 @@ class Game {
 
     int val = 1;
 
-    for (int x = 0; x < dimension; x++) {
+    for (int x = 0; x < dimension; x ++) {
       representation[x] = new int[dimension];
 
-      for (int y = 0; y < dimension; y++) {
-        representation[x][y] = val++%(dimension*dimension);
+      for (int y = 0; y < dimension; y ++) {
+        representation[x][y] = val ++ % (dimension * dimension);
       }
     }
 

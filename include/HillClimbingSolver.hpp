@@ -39,7 +39,6 @@ class HillClimbingSolver : public Solver {
     delete heuristic;
   }
 
-
   //! Compares two states using the available heuristic.
   //! The state that has the lowest heuristic is considered a more promising exploration candidate.
   //! \param a
@@ -50,7 +49,7 @@ class HillClimbingSolver : public Solver {
 
     if (h.calc(*a) < h.calc(*b)) return 1;
 
-    if (h.calc(*a) > h.calc(*b)) return -1;
+    if (h.calc(*a) > h.calc(*b)) return - 1;
 
     return 0;
   }
@@ -62,7 +61,7 @@ class HillClimbingSolver : public Solver {
 
     while (true) {
       // check for goal
-      if (*game.getGoal()==*only_one) {
+      if (*game.getGoal() == *only_one) {
         return endSearch(only_one, start);
       }
 
@@ -71,7 +70,7 @@ class HillClimbingSolver : public Solver {
 
       //variable to keep whether a child node has been chosen for exploration next
       bool changed = false;
-      while (!children.isEmpty()) {
+      while (! children.isEmpty()) {
         GameState *child = children.remove(0);
 
         // compare child with parent
@@ -80,12 +79,12 @@ class HillClimbingSolver : public Solver {
           only_one = child;
 
           // if not steepest, stop after the first child that is better than the parent is found
-          if (!steepest) break;
+          if (! steepest) break;
         }
       }
 
       // if no new child nodes have been found, a local maximum has been found
-      if (!changed) {
+      if (! changed) {
         cout << "WARNING: hill climbing procedure reached a local minimum\n";
         return endSearch(only_one, start);
       }

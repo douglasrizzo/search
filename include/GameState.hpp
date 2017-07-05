@@ -29,8 +29,8 @@ class GameState {
 
     //count spaces in string
     int spaces = 1;
-    for (int i = 0; i < s.length(); i++) {
-      if (s[i]==' ') spaces++;
+    for (int i = 0; i < s.length(); i ++) {
+      if (s[i] == ' ') spaces ++;
     }
 
     //create array
@@ -38,16 +38,16 @@ class GameState {
 
     int currentInt = 0;
     string intString = "";
-    for (int i = 0; i < s.length(); i++) {
+    for (int i = 0; i < s.length(); i ++) {
 
       //glues it number together until a space is found
-      if (s[i]!=' ') {
+      if (s[i] != ' ') {
         intString += s[i];
       }
 
       //space means end of number, turn it into an int and put it in the return array
-      if ((s[i]==' ') || (i==s.length() - 1)) {
-        ret[currentInt++] = stoi(intString);
+      if ((s[i] == ' ') || (i == s.length() - 1)) {
+        ret[currentInt ++] = stoi(intString);
         intString = "";
       }
     }
@@ -73,12 +73,12 @@ class GameState {
     int *conversion = toIntArray(s);
 
     // calculates puzzle dimension from array size
-    dimension = sizeof(conversion)/sizeof(conversion[0]) + 1;
+    dimension = sizeof(conversion) / sizeof(conversion[0]) + 1;
 
     // searches for duplicate numbers inside the array
-    for (int i = 0; i < dimension*dimension - 1; i++) {
-      for (int j = i + 1; j < dimension*dimension; j++) {
-        if (conversion[i]==conversion[j]) {
+    for (int i = 0; i < dimension * dimension - 1; i ++) {
+      for (int j = i + 1; j < dimension * dimension; j ++) {
+        if (conversion[i] == conversion[j]) {
           cout << conversion[i] << conversion[j] << i << j;
           throw invalid_argument(s);
         }
@@ -90,11 +90,11 @@ class GameState {
 
     //iterates through rows and columns, adding the numbers converted from the input string
     int val = 0;
-    for (int x = 0; x < dimension; x++) {
+    for (int x = 0; x < dimension; x ++) {
       representation[x] = new int[dimension]; // initialize inner arrays
 
-      for (int y = 0; y < dimension; y++) {
-        representation[x][y] = conversion[val++];
+      for (int y = 0; y < dimension; y ++) {
+        representation[x][y] = conversion[val ++];
       }
     }
 
@@ -109,10 +109,10 @@ class GameState {
 
     representation = new int *[dimension];
 
-    for (int x = 0; x < dimension; x++) {
+    for (int x = 0; x < dimension; x ++) {
       representation[x] = new int[dimension];
 
-      for (int y = 0; y < dimension; y++) {
+      for (int y = 0; y < dimension; y ++) {
         representation[x][y] = obj.representation[x][y];
       }
     }
@@ -131,10 +131,10 @@ class GameState {
     representation = new int *[dimension];
 
     // first, copy the state
-    for (int x = 0; x < dimension; x++) {
+    for (int x = 0; x < dimension; x ++) {
       representation[x] = new int[dimension];
 
-      for (int y = 0; y < dimension; y++) {
+      for (int y = 0; y < dimension; y ++) {
         representation[x][y] = previous->representation[x][y];
       }
     }
@@ -146,10 +146,10 @@ class GameState {
     int tmp = 0;
 
     // validate action
-    if (action!=RIGHT and action!=LEFT and action!=UP and action!=DOWN)
+    if (action != RIGHT and action != LEFT and action != UP and action != DOWN)
       throw invalid_argument("No previous action to build the new GameState.");
 
-    if (!isValid(action)) {
+    if (! isValid(action)) {
       throw invalid_argument("Invalid action for current game state.");
     }
 
@@ -181,8 +181,8 @@ class GameState {
   ~GameState() {
     // erase inner arrays
     // since the value of `dimension` is lost, calculate it here
-    int dim = sizeof(representation[0])/sizeof(representation[0][0]) + 1;
-    for (int i = 0; i < dim; i++)
+    int dim = sizeof(representation[0]) / sizeof(representation[0][0]) + 1;
+    for (int i = 0; i < dim; i ++)
       delete[] representation[i];
 
     //erase outer array
@@ -194,7 +194,7 @@ class GameState {
   //! \param action the action to be validated
   //! \return true if the action can be applied in this state, otherwise false
   bool isValid(GameAction action) {
-    if (action!=RIGHT and action!=LEFT and action!=UP and action!=DOWN)
+    if (action != RIGHT and action != LEFT and action != UP and action != DOWN)
       return false;
 
     int *pos_0 = find(0);
@@ -202,10 +202,10 @@ class GameState {
 
     delete[] pos_0;
 
-    return !(action==RIGHT and x==dimension - 1 ||
-        action==LEFT and x==0 ||
-        action==UP and y==0 ||
-        action==DOWN and y==dimension - 1);
+    return ! (action == RIGHT and x == dimension - 1 ||
+        action == LEFT and x == 0 ||
+        action == UP and y == 0 ||
+        action == DOWN and y == dimension - 1);
   }
 
   //! Checks whether two GameState objects are equal.
@@ -213,11 +213,11 @@ class GameState {
   //! \param other The GameState to be compared to
   //! \return true if equal, otherwise false
   bool operator==(const GameState &other) const {
-    if (dimension!=other.dimension) return false;
+    if (dimension != other.dimension) return false;
 
-    for (int x = 0; x < dimension; x++) {
-      for (int y = 0; y < dimension; y++) {
-        if (representation[x][y]!=other.representation[x][y]) return false;
+    for (int x = 0; x < dimension; x ++) {
+      for (int y = 0; y < dimension; y ++) {
+        if (representation[x][y] != other.representation[x][y]) return false;
       }
     }
     return true;
@@ -229,20 +229,20 @@ class GameState {
   int countInversions() {
     int inv_count = 0;
 
-    int rasterDimension = dimension*dimension;
+    int rasterDimension = dimension * dimension;
     int *raster = new int[rasterDimension];
 
     int current = 0;
-    for (int x = 0; x < dimension; x++) {
-      for (int y = 0; y < dimension; y++) {
-        raster[current++] = representation[x][y];
+    for (int x = 0; x < dimension; x ++) {
+      for (int y = 0; y < dimension; y ++) {
+        raster[current ++] = representation[x][y];
       }
     }
 
-    for (int i = 0; i < rasterDimension - 1; i++)
-      for (int j = i + 1; j < rasterDimension; j++)
-        if (raster[i]!=0 and raster[j]!=0 and raster[i] > raster[j])
-          inv_count++;
+    for (int i = 0; i < rasterDimension - 1; i ++)
+      for (int j = i + 1; j < rasterDimension; j ++)
+        if (raster[i] != 0 and raster[j] != 0 and raster[i] > raster[j])
+          inv_count ++;
 
     delete[] raster;
 
@@ -252,7 +252,7 @@ class GameState {
   //! Check if the state is solvable.
   //! \return a state is solvable if the number of inversions in it is even.
   bool isSolvable() {
-    return countInversions()%2==0;
+    return countInversions() % 2 == 0;
   }
 
   //! Compares two GameState objects. Tile numbers are compared in order. If this[i,j] < other[i,j], this < other.
@@ -260,10 +260,10 @@ class GameState {
   //! \param other The GameState to be compared to
   //! \return true if this < other, otherwise false
   bool operator<(const GameState &other) const {
-    if (dimension!=other.dimension) throw invalid_argument("Puzzles of different dimensions aren't comparable");
+    if (dimension != other.dimension) throw invalid_argument("Puzzles of different dimensions aren't comparable");
 
-    for (int x = 0; x < dimension; x++) {
-      for (int y = 0; y < dimension; y++) {
+    for (int x = 0; x < dimension; x ++) {
+      for (int y = 0; y < dimension; y ++) {
         if (representation[x][y] < other.representation[x][y]) return true;
       }
     }
@@ -274,7 +274,7 @@ class GameState {
   //! \param other The GameState to be compared to
   //! \return false if equal, otherwise true
   bool operator!=(const GameState &other) const {
-    return !(*this==other);
+    return ! (*this == other);
   }
 
   int getDimension() const {
@@ -286,8 +286,8 @@ class GameState {
   string to_string() const {
     string tmp = "";
 
-    for (int x = 0; x < dimension; x++) {
-      for (int y = 0; y < dimension; y++) {
+    for (int x = 0; x < dimension; x ++) {
+      for (int y = 0; y < dimension; y ++) {
         tmp.append(std::to_string(representation[x][y])).append(" ");
       }
       tmp.append("\n");
@@ -300,8 +300,8 @@ class GameState {
   string to_line_string() const {
     string tmp = "";
 
-    for (int x = 0; x < dimension; x++) {
-      for (int y = 0; y < dimension; y++) {
+    for (int x = 0; x < dimension; x ++) {
+      for (int y = 0; y < dimension; y ++) {
         tmp.append(std::to_string(representation[x][y])).append(" ");
       }
     }
@@ -312,9 +312,9 @@ class GameState {
   //! \param value the value of the tile to look for
   //! \return int array where [0] contains x position and [1] y position of the number
   int *find(int value) {
-    for (int x = 0; x < dimension; x++) {
-      for (int y = 0; y < dimension; y++) {
-        if (representation[x][y]==value) return new int[2]{x, y};
+    for (int x = 0; x < dimension; x ++) {
+      for (int y = 0; y < dimension; y ++) {
+        if (representation[x][y] == value) return new int[2]{x, y};
       }
     }
 
@@ -325,7 +325,7 @@ class GameState {
     this->representation = representation;
 
     //dimension must be recalculated
-    dimension = sizeof(representation[0])/sizeof(representation[0][0]) + 1;
+    dimension = sizeof(representation[0]) / sizeof(representation[0][0]) + 1;
   }
 
   GameState *getParent() const {

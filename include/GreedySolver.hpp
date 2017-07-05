@@ -41,7 +41,7 @@ class GreedySolver : public Solver {
 
     if (h.calc(*a) < h.calc(*b)) return 1;
 
-    if (h.calc(*a) > h.calc(*b)) return -1;
+    if (h.calc(*a) > h.calc(*b)) return - 1;
 
     return 0;
   }
@@ -52,18 +52,18 @@ class GreedySolver : public Solver {
 
     const clock_t start = clock();
     expanded.insert(&g0);
-    while (!expanded.isEmpty()) {
+    while (! expanded.isEmpty()) {
       // need only remove the first element, since they are ordered
       GameState *currentGame = expanded.remove(0);
 
       // check for goal
-      if (*game.getGoal()==*currentGame) {
+      if (*game.getGoal() == *currentGame) {
         return endSearch(currentGame, start);
       }
 
       // expand children
       LinkedList<GameState *> children = visit(currentGame);
-      while (!children.isEmpty()) {
+      while (! children.isEmpty()) {
         expanded.insert(children.remove(0));
       }
     }

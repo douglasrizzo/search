@@ -26,12 +26,12 @@ class Manhattan : public Heuristic {
   int calc(GameState &currentState) {
     int distance = 0, dimension = currentState.getDimension();
 
-    for (int i = 0; i < pow(dimension, 2); i++) {
+    for (int i = 0; i < pow(dimension, 2); i ++) {
       int *pos = currentState.find(i);
       int x = pos[0], y = pos[1];
       delete[] pos;
-      int x_opt = i!=0 ? (i - 1)/dimension : 2,
-          y_opt = i!=0 ? (i - 1)%dimension : 2;
+      int x_opt = i != 0 ? (i - 1) / dimension : 2,
+          y_opt = i != 0 ? (i - 1) % dimension : 2;
 
       distance += abs(x - x_opt) + abs(y - y_opt);
     }
@@ -47,14 +47,14 @@ class TileDifference : public Heuristic {
     int distance = 0, dimension = currentState.getDimension();
 
     // adds 1 for every tile that is not in its goal position
-    for (int i = 0; i < pow(dimension, 2); i++) {
+    for (int i = 0; i < pow(dimension, 2); i ++) {
       int *pos = currentState.find(i);
       int x = pos[0], y = pos[1];
       delete[] pos;
-      int x_opt = i!=0 ? (i - 1)/dimension : 2,
-          y_opt = i!=0 ? (i - 1)%dimension : 2;
+      int x_opt = i != 0 ? (i - 1) / dimension : 2,
+          y_opt = i != 0 ? (i - 1) % dimension : 2;
 
-      distance += x!=x_opt || y!=y_opt;
+      distance += x != x_opt || y != y_opt;
     }
     return distance;
   }

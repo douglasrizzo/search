@@ -15,16 +15,16 @@
 
 // !Base class for all 8-puzzle solvers.
 class Solver {
-private:
+ private:
 
   static int compare(GameState *a, GameState *b) {
     return *a < *b;
   }
 
-protected:
+ protected:
 
   // linked list to keep visited states
-  OrderedList<GameState *>visited = OrderedList<GameState *>(compare);
+  OrderedList<GameState *> visited = OrderedList<GameState *>(compare);
 
   // other values to keep as statistics of the solve
   int visitedNodes, maxDepth, solutionDepth;
@@ -33,7 +33,7 @@ protected:
   // ! Checks whether a node has already been visited by the solver.
   // ! \param g The state to look for
   // ! \return true if g has been visited, otherwise false
-  bool isVisited(GameState& g) {
+  bool isVisited(GameState &g) {
     return visited.contains(&g);
   }
 
@@ -43,9 +43,9 @@ protected:
   // ! \return a list of the valid child states. A valid child state is the
   // result state of applying a valid action to the current state. Only states
   // that have not been visited before by the solver are returned.
-  LinkedList<GameState *>visit(GameState *current) {
+  LinkedList<GameState *> visit(GameState *current) {
     LinkedList<GameState *> retornus;
-    GameAction actions[4] { RIGHT, DOWN, LEFT, UP };
+    GameAction actions[4]{RIGHT, DOWN, LEFT, UP};
 
     // add current state to the list of visited states
     visited.insert(current);
@@ -54,7 +54,7 @@ protected:
     if (current->getDepth() > maxDepth) maxDepth = current->getDepth();
 
     // iterate through the 4 actions
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i ++) {
       // check if the action is valid
       if (current->isValid(actions[i])) {
         // generate a child state from the valid action
@@ -62,7 +62,7 @@ protected:
         // child node has not been visited by the solver before
         GameState *newState = new GameState(current, actions[i]);
 
-        if (!isVisited(*newState)) retornus.insert(newState);
+        if (! isVisited(*newState)) retornus.insert(newState);
         else delete newState;
       }
     }
@@ -83,7 +83,7 @@ protected:
   // span
   // ! \return list containing the steps from the initial state to the goal
   // state
-  LinkedList<GameState *>endSearch(GameState *currentGame, const clock_t start) {
+  LinkedList<GameState *> endSearch(GameState *currentGame, const clock_t start) {
     secondsToSolve = float(clock() - start) / CLOCKS_PER_SEC;
 
     LinkedList<GameState *> resultSteps;
@@ -103,7 +103,7 @@ protected:
     return resultSteps;
   }
 
-public:
+ public:
 
   double getSecondsToSolve() const {
     return secondsToSolve;
@@ -122,7 +122,7 @@ public:
   }
 
   Solver() {
-    visited        = OrderedList<GameState *>(compare);
+    visited = OrderedList<GameState *>(compare);
     secondsToSolve = visitedNodes = maxDepth = solutionDepth = 0;
   }
 
@@ -134,19 +134,19 @@ public:
   // ! \param gs The initial state of the game.
   // ! \return list containing all states explored, from the initial state to
   // the goal state.
-  virtual LinkedList<GameState *>solve(Game     & g,
-                                       GameState& gs) = 0;
+  virtual LinkedList<GameState *> solve(Game &g,
+                                        GameState &gs) = 0;
 
   // ! Generates a string containing useful information from the solver run.
   // ! \return string representation of the state-space exploration
   string to_string() {
     return string(
-      "\t\t\t\tSeconds: ").append(std::to_string(getSecondsToSolve())).append(
-      "\n\t\t Solution depth: ").append(
-      std::to_string(getSolutionDepth())).append("\n\t Max depth explored: ").
-           append(
-      std::to_string(getMaxDepth())).append("\nNumber of visited nodes: ").append(
-      std::to_string(getVisitedNodes())).append("\n");
+        "\t\t\t\tSeconds: ").append(std::to_string(getSecondsToSolve())).append(
+        "\n\t\t Solution depth: ").append(
+        std::to_string(getSolutionDepth())).append("\n\t Max depth explored: ").
+        append(
+        std::to_string(getMaxDepth())).append("\nNumber of visited nodes: ").append(
+        std::to_string(getVisitedNodes())).append("\n");
   }
 };
 

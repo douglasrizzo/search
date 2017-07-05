@@ -40,7 +40,7 @@ class AStarSolver : public Solver {
 
     if (h.calc(*a) + a->getDepth() < h.calc(*b) + b->getDepth()) return 1;
 
-    if (h.calc(*a) + a->getDepth() > h.calc(*b) + b->getDepth()) return -1;
+    if (h.calc(*a) + a->getDepth() > h.calc(*b) + b->getDepth()) return - 1;
 
     return 0;
   }
@@ -52,19 +52,19 @@ class AStarSolver : public Solver {
     const clock_t start = clock();
     expanded.insert(&g0);
 
-    while (!expanded.isEmpty()) {
+    while (! expanded.isEmpty()) {
       // need only get the first state in the list, since they are ordered! SO FAST
       GameState *currentGame = expanded.remove(0);
 
       // has the goal state been found?
-      if (*game.getGoal()==*currentGame) {
+      if (*game.getGoal() == *currentGame) {
         return endSearch(currentGame, start);
       }
 
       // otherwise, expand children and insert them in the ordered
       // list in the position where they belong
       LinkedList<GameState *> children = visit(currentGame);
-      while (!children.isEmpty()) {
+      while (! children.isEmpty()) {
         expanded.insert(children.remove(0));
       }
     }

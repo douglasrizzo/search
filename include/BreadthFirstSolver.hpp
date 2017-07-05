@@ -23,23 +23,23 @@ class BreadthFirstSolver : public Solver {
 
     int currentDepth = 0;
 
-    while (!expanded.isEmpty()) {
+    while (! expanded.isEmpty()) {
       GameState *currentGame = expanded.dequeue();
 
       // check for goal
-      if (*game.getGoal()==*currentGame) {
+      if (*game.getGoal() == *currentGame) {
         return endSearch(currentGame, start);
       }
 
       // if new depth, output a line to stdout
-      if (currentGame->getDepth()!=currentDepth) {
+      if (currentGame->getDepth() != currentDepth) {
         currentDepth = currentGame->getDepth();
         cout << currentGame->getDepth() << '\t' << visited.getSize() << '\t' << expanded.getSize() << endl;
       }
 
       //expand children
       LinkedList<GameState *> children = visit(currentGame);
-      while (!children.isEmpty()) expanded.enqueue(children.remove(0));
+      while (! children.isEmpty()) expanded.enqueue(children.remove(0));
     }
     throw invalid_argument("This game is unsolvable!");
   }
