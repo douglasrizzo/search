@@ -223,6 +223,38 @@ class GameState {
     return true;
   }
 
+  //! Counts the number of inversions in the puzzle.
+  //! An inversion occurs whenever a number comes before a smaller number in the puzzle.
+  //! \return number of inversions in this states of the puzzle
+  int countInversions() {
+    int inv_count = 0;
+
+    int rasterDimension = dimension*dimension;
+    int *raster = new int[rasterDimension];
+
+    int current = 0;
+    for (int x = 0; x < dimension; x++) {
+      for (int y = 0; y < dimension; y++) {
+        raster[current++] = representation[x][y];
+      }
+    }
+
+    for (int i = 0; i < rasterDimension - 1; i++)
+      for (int j = i + 1; j < rasterDimension; j++)
+        if (raster[i]!=0 and raster[j]!=0 and raster[i] > raster[j])
+          inv_count++;
+
+    delete[] raster;
+
+    return inv_count;
+  }
+
+  //! Check if the state is solvable.
+  //! \return a state is solvable if the number of inversions in it is even.
+  bool isSolvable() {
+    return countInversions()%2==0;
+  }
+
   //! Compares two GameState objects. Tile numbers are compared in order. If this[i,j] < other[i,j], this < other.
   //! This operator is useful in case objects need to be sorted inside a data structure, for example.
   //! \param other The GameState to be compared to
