@@ -62,6 +62,7 @@ class HillClimbingSolver : public Solver {
     while (true) {
       // check for goal
       if (*game.getGoal() == *only_one) {
+        solved = true;
         return endSearch(only_one, start);
       }
 
@@ -86,6 +87,7 @@ class HillClimbingSolver : public Solver {
       // if no new child nodes have been found, a local maximum has been found
       if (! changed) {
         cout << "WARNING: hill climbing procedure reached a local minimum\n";
+        solved = false;
         return endSearch(only_one, start);
       }
     }

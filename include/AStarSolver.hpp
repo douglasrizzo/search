@@ -58,6 +58,7 @@ class AStarSolver : public Solver {
 
       // has the goal state been found?
       if (*game.getGoal() == *currentGame) {
+        solved=true;
         return endSearch(currentGame, start);
       }
 

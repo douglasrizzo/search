@@ -30,6 +30,9 @@ class Solver {
   int visitedNodes, maxDepth, solutionDepth;
   float secondsToSolve;
 
+  // used in case the solver is incomplete
+  bool solved;
+
   // ! Checks whether a node has already been visited by the solver.
   // ! \param g The state to look for
   // ! \return true if g has been visited, otherwise false
@@ -121,9 +124,14 @@ class Solver {
     return solutionDepth;
   }
 
+  bool isSolved() {
+    return solved;
+  }
+
   Solver() {
     visited = OrderedList<GameState *>(compare);
     secondsToSolve = visitedNodes = maxDepth = solutionDepth = 0;
+    solved = false;
   }
 
   // ! Explores the game tree in search of the goal state.

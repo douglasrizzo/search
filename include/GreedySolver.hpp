@@ -58,6 +58,7 @@ class GreedySolver : public Solver {
 
       // check for goal
       if (*game.getGoal() == *currentGame) {
+        solved=true;
         return endSearch(currentGame, start);
       }
 
