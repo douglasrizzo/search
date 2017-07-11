@@ -151,16 +151,13 @@ void testFastSolvers() {
 }
 
 //! Creates one of each solver, randomly selects a puzzle from the
-//! input file and tests all sovers against it.
+//! input file and tests all solvers against it.
 //! Non-informed solvers might take too long to finish some states.
 int testAllSolvers() {
-  LinkedList<string> *puzzles = getPuzzles();
-
   Game game = Game(3);
-  int chosen_one = myRandom(puzzles->getSize());
-  GameState gs = GameState(puzzles->remove(chosen_one));
 
-  delete puzzles;
+  // this is just a known tractable problem with solution in depth 18
+  GameState gs = GameState("0 3 6 4 7 5 2 1 8");
 
   GreedySolver *s1 = new GreedySolver(new Manhattan());
   AStarSolver *s2 = new AStarSolver(new Manhattan());

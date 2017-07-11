@@ -18,9 +18,8 @@ class AStarSolver : public Solver {
   Heuristic *heuristic;
 
  public:
-//! \param h the heuristic to be used by A*
-  explicit AStarSolver(Heuristic *h) {
-    heuristic = h;
+  //! \param h the heuristic to be used by A*
+  explicit AStarSolver(Heuristic *h) : heuristic(h) {
   }
 
   ~AStarSolver() {
@@ -58,7 +57,7 @@ class AStarSolver : public Solver {
 
       // has the goal state been found?
       if (*game.getGoal() == *currentGame) {
-        solved=true;
+        solved = true;
         return endSearch(currentGame, start);
       }
 

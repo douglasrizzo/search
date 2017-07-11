@@ -187,6 +187,10 @@ class GameState {
 
     //erase outer array
     delete[] representation;
+
+    representation=NULL;
+    parent = NULL;
+    depth = dimension = 0;
   }
 
   //! Checks whether an action is valid for this state.

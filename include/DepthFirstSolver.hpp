@@ -12,7 +12,7 @@
 #include "Solver.hpp"
 #include "GameAction.hpp"
 
-// ! 8-puzzle exploration based on a depth-first search strategy
+//! 8-puzzle exploration based on a depth-first search strategy
 class DepthFirstSolver : public Solver {
  private:
 
@@ -20,14 +20,12 @@ class DepthFirstSolver : public Solver {
 
  public:
 
-  DepthFirstSolver() {
+  DepthFirstSolver() : maxDepth(- 1) {
     // no limits in depth
-    maxDepth = - 1;
   }
 
-  // ! \param maxDepth the maximum depth allowed for exploration
-  explicit DepthFirstSolver(int maxDepth) {
-    this->maxDepth = maxDepth > - 1 ? maxDepth : - 1;
+  //! \param maxDepth the maximum depth allowed for exploration
+  explicit DepthFirstSolver(int maxDepth) : maxDepth(maxDepth > - 1 ? maxDepth : - 1) {
   }
 
   LinkedList<GameState *> solve(Game &game, GameState &g0) {
@@ -46,11 +44,12 @@ class DepthFirstSolver : public Solver {
         currentMaxDepth = currentGame->getDepth();
       }
 
-      cout << currentGame->getDepth() << '\t' << visited.getSize() << '\t' << expanded.getSize() << endl;
+      // useful only for debugging
+      // cout << currentGame->getDepth() << '\t' << visited.getSize() << '\t' << expanded.getSize() << endl;
 
       // check for goal
       if (*game.getGoal() == *currentGame) {
-        solved=true;
+        solved = true;
         return endSearch(currentGame, start);
       }
 

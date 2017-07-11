@@ -21,8 +21,7 @@ class GreedySolver : public Solver {
 
   //! Initializes the solver
   //! \param h the heuristic to be used by the algorithm
-  explicit GreedySolver(Heuristic *h) {
-    heuristic = h;
+  explicit GreedySolver(Heuristic *h) : heuristic(h) {
   }
 
   ~GreedySolver() {
