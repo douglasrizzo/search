@@ -7,6 +7,7 @@
 #include "BreadthFirstSolver.hpp"
 #include "GreedySolver.hpp"
 #include "HillClimbingSolver.hpp"
+#include "MonteCarloSolver.hpp"
 
 int myRandom(int max) {
   time_t result = time(nullptr);
@@ -116,8 +117,8 @@ void testFastSolvers() {
 
   Game g = Game(3);
 
-  int n1, n2, n3, n4, totalPuzzles = l->getSize();
-  n1 = n2 = n3 = n4 = 0;
+  int n1, n2, n3, n4, n5, totalPuzzles = l->getSize();
+  n1 = n2 = n3 = n4 = n5 = 0;
 
   while (! l->isEmpty()) {
     cout << l->getSize() << "/" << totalPuzzles << endl;
@@ -127,18 +128,21 @@ void testFastSolvers() {
     GreedySolver *s2 = new GreedySolver(new Manhattan());
     HillClimbingSolver *s3 = new HillClimbingSolver(new Manhattan(), false);
     HillClimbingSolver *s4 = new HillClimbingSolver(new Manhattan(), true);
+    MonteCarloSolver *s5 = new MonteCarloSolver();
 
-    testSingleSolver(s1, g, gs, false);
-    testSingleSolver(s2, g, gs, false);
-    testSingleSolver(s3, g, gs, false);
-    testSingleSolver(s4, g, gs, false);
+//    testSingleSolver(s1, g, gs, false);
+//    testSingleSolver(s2, g, gs, false);
+//    testSingleSolver(s3, g, gs, false);
+//    testSingleSolver(s4, g, gs, false);
+    testSingleSolver(s5, g, gs, false);
 
-    n1 += s1->isSolved();
-    n2 += s2->isSolved();
-    n3 += s3->isSolved();
-    n4 += s4->isSolved();
+//    n1 += s1->isSolved();
+//    n2 += s2->isSolved();
+//    n3 += s3->isSolved();
+//    n4 += s4->isSolved();
+    n5 += s5->isSolved();
 
-    delete s1, s2, s3, s4;
+    delete s1, s2, s3, s4, s5;
 
   }
 
