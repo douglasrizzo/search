@@ -23,19 +23,20 @@ class BreadthFirstSolver : public Solver {
 
     int currentDepth = 0;
 
+    cout << "Depth\tVisited\t\tExpanded\n";
     while (! expanded.isEmpty()) {
       GameState *currentGame = expanded.dequeue();
 
       // check for goal
       if (*game.getGoal() == *currentGame) {
-        solved=true;
+        solved = true;
         return endSearch(currentGame, start);
       }
 
       // if new depth, output a line to stdout
       if (currentGame->getDepth() != currentDepth) {
         currentDepth = currentGame->getDepth();
-        cout << currentGame->getDepth() << '\t' << visited.getSize() << '\t' << expanded.getSize() << endl;
+        cout << currentGame->getDepth() << "\t\t" << visited.getSize() << "\t\t\t" << expanded.getSize() << endl;
       }
 
       //expand children

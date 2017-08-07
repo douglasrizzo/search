@@ -186,7 +186,7 @@ int main() {
 //  testStateTransitions();
 //  testEquality();
 //  testSolvability();
-  testFastSolvers();
-//  testAllSolvers();
+//  testFastSolvers();
+  testAllSolvers();
   return 0;
 }
