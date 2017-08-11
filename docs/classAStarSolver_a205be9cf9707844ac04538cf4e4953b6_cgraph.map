@@ -1,0 +1,5 @@
+<map id="AStarSolver::compare" name="AStarSolver::compare">
+<area shape="rect" id="node2" href="$classManhattan.html#a3160ab4be17834ebe0ffc1b2c3a39a80" title="Calculates the heuristic value for a state. " alt="" coords="221,5,336,32"/>
+<area shape="rect" id="node4" href="$classGameState.html#a41c95142240883acdc188607649143c3" title="GameState::getDepth" alt="" coords="204,56,353,83"/>
+<area shape="rect" id="node3" href="$classGameState.html#ac331f87dcabb71ca7a9d4c316b384a14" title="GameState::getDimension" alt="" coords="401,5,577,32"/>
+</map>

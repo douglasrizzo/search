@@ -1,0 +1,7 @@
+<map id="GameState::getDimension" name="GameState::getDimension">
+<area shape="rect" id="node2" href="$classManhattan.html#a3160ab4be17834ebe0ffc1b2c3a39a80" title="Calculates the heuristic value for a state. " alt="" coords="239,56,354,83"/>
+<area shape="rect" id="node6" href="$classTileDifference.html#a4469aa4700e136f8e990472a5fb75a20" title="Calculates the heuristic value for a state. " alt="" coords="229,107,364,133"/>
+<area shape="rect" id="node3" href="$classAStarSolver.html#a205be9cf9707844ac04538cf4e4953b6" title="Compares two states using the available heuristic. " alt="" coords="416,5,567,32"/>
+<area shape="rect" id="node4" href="$classGreedySolver.html#a8ad879d049de3e65288e174a2c235dc2" title="Compares two states using the available heuristic. " alt="" coords="412,56,571,83"/>
+<area shape="rect" id="node5" href="$classHillClimbingSolver.html#ac964fcf629413a82647aad14628f9223" title="Compares two states using the available heuristic. " alt="" coords="427,107,556,149"/>
+</map>

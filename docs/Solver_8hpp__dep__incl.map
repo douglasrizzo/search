@@ -1,0 +1,9 @@
+<map id="include/Solver.hpp" name="include/Solver.hpp">
+<area shape="rect" id="node2" href="$AStarSolver_8hpp.html" title="include/AStarSolver.hpp" alt="" coords="5,80,167,107"/>
+<area shape="rect" id="node4" href="$DepthFirstSolver_8hpp.html" title="include/DepthFirstSolver.hpp" alt="" coords="191,80,381,107"/>
+<area shape="rect" id="node5" href="$BreadthFirstSolver_8hpp.html" title="include/BreadthFirstSolver.hpp" alt="" coords="405,80,605,107"/>
+<area shape="rect" id="node6" href="$GreedySolver_8hpp.html" title="include/GreedySolver.hpp" alt="" coords="629,80,799,107"/>
+<area shape="rect" id="node7" href="$HillClimbingSolver_8hpp.html" title="include/HillClimbingSolver.hpp" alt="" coords="824,80,1023,107"/>
+<area shape="rect" id="node8" href="$MonteCarloSolver_8hpp.html" title="include/MonteCarloSolver.hpp" alt="" coords="1047,80,1243,107"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="test/main.cpp" alt="" coords="558,155,659,181"/>
+</map>

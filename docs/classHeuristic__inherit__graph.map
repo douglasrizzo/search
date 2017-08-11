@@ -1,0 +1,4 @@
+<map id="Heuristic" name="Heuristic">
+<area shape="rect" id="node2" href="$classManhattan.html" title="Implementation of the Manhattan distance for the 8&#45;puzzle. " alt="" coords="5,131,88,208"/>
+<area shape="rect" id="node3" href="$classTileDifference.html" title="Implementation of the tile difference heuristic for the 8&#45;puzzle. " alt="" coords="113,131,215,208"/>
+</map>

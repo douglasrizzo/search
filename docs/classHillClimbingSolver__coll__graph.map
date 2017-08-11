@@ -1,0 +1,4 @@
+<map id="HillClimbingSolver" name="HillClimbingSolver">
+<area shape="rect" id="node2" href="$classSolver.html" title="Base class for all 8&#45;puzzle solvers. " alt="" coords="173,175,332,428"/>
+<area shape="rect" id="node7" href="$classHeuristic.html" title="Abtract class for heuristic functions. " alt="" coords="523,263,598,340"/>
+</map>

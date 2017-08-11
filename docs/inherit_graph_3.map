@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classSolver.html" title="Base class for all 8&#45;puzzle solvers. " alt="" coords="5,132,64,159"/>
+<area shape="rect" id="node2" href="$classAStarSolver.html" title="8&#45;puzzle exploration based on the A* search algorithm " alt="" coords="131,5,223,32"/>
+<area shape="rect" id="node3" href="$classBreadthFirstSolver.html" title="8&#45;puzzle exploration based on a breadth&#45;first search strategy " alt="" coords="112,56,243,83"/>
+<area shape="rect" id="node4" href="$classDepthFirstSolver.html" title="8&#45;puzzle exploration based on a depth&#45;first search strategy " alt="" coords="117,107,237,133"/>
+<area shape="rect" id="node5" href="$classGreedySolver.html" title="Implementation of a greedy exploration algorithm for the 8&#45;puzzle game. " alt="" coords="127,157,228,184"/>
+<area shape="rect" id="node6" href="$classHillClimbingSolver.html" title="Implementation of a hill&#45;climbing optimization algorithm for the 8&#45;puzzle. " alt="" coords="113,208,242,235"/>
+<area shape="rect" id="node7" href="$classMonteCarloSolver.html" title="Memoryless solver that randomly searches the state space. " alt="" coords="114,259,241,285"/>
+</map>

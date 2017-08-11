@@ -1,0 +1,16 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$main_8cpp.html#ac6c9ec3e7bfe3c929009584766bef20d" title="Creates one of each solver, randomly selects a puzzle from the input file and tests all solvers again..." alt="" coords="104,364,207,391"/>
+<area shape="rect" id="node3" href="$classGame.html#ad3adcd1c4d46c6412e1fd2958bb2f72b" title="Creates a game representation and keeps a GameState of the goal state. " alt="" coords="299,31,399,57"/>
+<area shape="rect" id="node6" href="$classGreedySolver.html#aa0b9496b8cee2a122b811bf76283d687" title="Explores the game tree in search of the goal state. " alt="" coords="279,105,419,132"/>
+<area shape="rect" id="node7" href="$classGreedySolver.html#ae282b193cc99888abfef70d8c02bf9bb" title="Initializes the solver. " alt="" coords="255,156,443,183"/>
+<area shape="rect" id="node8" href="$classAStarSolver.html#a803f85665550cc1e87d5d74d7b568204" title="Explores the game tree in search of the goal state. " alt="" coords="284,231,415,257"/>
+<area shape="rect" id="node9" href="$classAStarSolver.html#ae8d48eac750a478780092c134b2d503b" title="AStarSolver::AStarSolver" alt="" coords="264,281,435,308"/>
+<area shape="rect" id="node10" href="$classHillClimbingSolver.html#a6c79ab5d993d3748c8e56dfa1e6d24e1" title="Explores the game tree in search of the goal state. " alt="" coords="285,357,414,398"/>
+<area shape="rect" id="node11" href="$classHillClimbingSolver.html#abea010329f62ba6488a9450b4f65961e" title="Initializes a regular hill&#45;climbing 8&#45;puzzle solver. " alt="" coords="281,422,418,463"/>
+<area shape="rect" id="node12" href="$classBreadthFirstSolver.html#aa8003debc55fb72ac077ef0d0489071b" title="Explores the game tree in search of the goal state. " alt="" coords="284,511,415,553"/>
+<area shape="rect" id="node13" href="$classDepthFirstSolver.html#a2809ff4fd495d915f4c02a1e1927ee15" title="Explores the game tree in search of the goal state. " alt="" coords="270,601,429,628"/>
+<area shape="rect" id="node14" href="$classDepthFirstSolver.html#a1305bcda181d52d52285f904b4a9007c" title="DepthFirstSolver::DepthFirst\lSolver" alt="" coords="255,653,444,694"/>
+<area shape="rect" id="node15" href="$main_8cpp.html#ab5ab5ac71f432f7a8ec5a553a3116091" title="Generic function to test a single solver and print its output. " alt="" coords="291,719,408,745"/>
+<area shape="rect" id="node4" href="$classGameState.html#a4fa0a2bf50315c4a35a3890a0adcee5c" title="Default constructor, everything starts as 0 or NULL. " alt="" coords="512,5,675,32"/>
+<area shape="rect" id="node5" href="$classGameState.html#a6fab869a6c4f80df3837849b8252aa1d" title="GameState::setRepresentation" alt="" coords="492,56,695,83"/>
+</map>

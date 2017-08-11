@@ -1,0 +1,7 @@
+<map id="GameState::GameState" name="GameState::GameState">
+<area shape="rect" id="node2" href="$classGame.html#ad3adcd1c4d46c6412e1fd2958bb2f72b" title="Creates a game representation and keeps a GameState of the goal state. " alt="" coords="216,56,316,83"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#ab8923421a0b0b96ad6b6d7cf25d7bc35" title="Checks if the goal state is correctly generated. " alt="" coords="364,5,484,32"/>
+<area shape="rect" id="node4" href="$main_8cpp.html#a114d586c6a5d1a4ea66a6793eb6a1fcc" title="Tests the fastest solvers against all of the puzzles. " alt="" coords="367,56,481,83"/>
+<area shape="rect" id="node5" href="$main_8cpp.html#ac6c9ec3e7bfe3c929009584766bef20d" title="Creates one of each solver, randomly selects a puzzle from the input file and tests all solvers again..." alt="" coords="373,107,475,133"/>
+<area shape="rect" id="node6" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="532,107,583,133"/>
+</map>

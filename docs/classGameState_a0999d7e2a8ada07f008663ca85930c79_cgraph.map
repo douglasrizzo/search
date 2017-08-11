@@ -1,0 +1,4 @@
+<map id="GameState::GameState" name="GameState::GameState">
+<area shape="rect" id="node2" href="$classGameState.html#ab769bcbb1102f37bf943b207d57ed1fe" title="Finds the position of a tile in the board. " alt="" coords="399,5,516,32"/>
+<area shape="rect" id="node3" href="$classGameState.html#a1a5a65954a51e691971f626dcb9e0f40" title="Checks whether an action is valid for this state. " alt="" coords="216,31,351,57"/>
+</map>

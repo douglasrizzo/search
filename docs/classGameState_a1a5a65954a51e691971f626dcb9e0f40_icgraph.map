@@ -1,0 +1,4 @@
+<map id="GameState::isValid" name="GameState::isValid">
+<area shape="rect" id="node2" href="$main_8cpp.html#a5b9f767b5cb710c0aaa16939eca00e66" title="Gets a puzzle and performs a series of actions in it to test transitions. " alt="" coords="399,5,537,32"/>
+<area shape="rect" id="node3" href="$classGameState.html#a0999d7e2a8ada07f008663ca85930c79" title="Creates a new state based on a given previous state and applying an action to it. ..." alt="" coords="188,31,351,57"/>
+</map>

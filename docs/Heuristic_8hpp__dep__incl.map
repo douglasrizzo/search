@@ -1,0 +1,7 @@
+<map id="include/Heuristic.hpp" name="include/Heuristic.hpp">
+<area shape="rect" id="node2" href="$AStarSolver_8hpp.html" title="include/AStarSolver.hpp" alt="" coords="5,80,167,107"/>
+<area shape="rect" id="node4" href="$GreedySolver_8hpp.html" title="include/GreedySolver.hpp" alt="" coords="191,80,362,107"/>
+<area shape="rect" id="node5" href="$HillClimbingSolver_8hpp.html" title="include/HillClimbingSolver.hpp" alt="" coords="387,80,585,107"/>
+<area shape="rect" id="node6" href="$MonteCarloSolver_8hpp.html" title="include/MonteCarloSolver.hpp" alt="" coords="609,80,805,107"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="test/main.cpp" alt="" coords="330,155,431,181"/>
+</map>

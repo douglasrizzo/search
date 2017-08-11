@@ -1,0 +1,5 @@
+<map id="GameState::find" name="GameState::find">
+<area shape="rect" id="node2" href="$classGameState.html#a0999d7e2a8ada07f008663ca85930c79" title="Creates a new state based on a given previous state and applying an action to it. ..." alt="" coords="353,5,516,32"/>
+<area shape="rect" id="node4" href="$classGameState.html#a1a5a65954a51e691971f626dcb9e0f40" title="Checks whether an action is valid for this state. " alt="" coords="171,56,305,83"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#a5b9f767b5cb710c0aaa16939eca00e66" title="Gets a puzzle and performs a series of actions in it to test transitions. " alt="" coords="564,31,703,57"/>
+</map>

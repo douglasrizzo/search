@@ -1,0 +1,4 @@
+<map id="GreedySolver" name="GreedySolver">
+<area shape="rect" id="node2" href="$classSolver.html" title="Base class for all 8&#45;puzzle solvers. " alt="" coords="145,175,304,428"/>
+<area shape="rect" id="node7" href="$classHeuristic.html" title="Abtract class for heuristic functions. " alt="" coords="329,263,403,340"/>
+</map>

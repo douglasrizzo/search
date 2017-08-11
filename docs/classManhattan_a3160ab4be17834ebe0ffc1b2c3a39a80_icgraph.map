@@ -1,0 +1,5 @@
+<map id="Manhattan::calc" name="Manhattan::calc">
+<area shape="rect" id="node2" href="$classAStarSolver.html#a205be9cf9707844ac04538cf4e4953b6" title="Compares two states using the available heuristic. " alt="" coords="172,5,323,32"/>
+<area shape="rect" id="node3" href="$classGreedySolver.html#a8ad879d049de3e65288e174a2c235dc2" title="Compares two states using the available heuristic. " alt="" coords="168,56,327,83"/>
+<area shape="rect" id="node4" href="$classHillClimbingSolver.html#ac964fcf629413a82647aad14628f9223" title="Compares two states using the available heuristic. " alt="" coords="183,107,312,149"/>
+</map>

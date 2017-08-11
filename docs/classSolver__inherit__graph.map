@@ -1,0 +1,8 @@
+<map id="Solver" name="Solver">
+<area shape="rect" id="node2" href="$classAStarSolver.html" title="8&#45;puzzle exploration based on the A* search algorithm " alt="" coords="5,395,125,516"/>
+<area shape="rect" id="node3" href="$classBreadthFirstSolver.html" title="8&#45;puzzle exploration based on a breadth&#45;first search strategy " alt="" coords="149,417,280,494"/>
+<area shape="rect" id="node4" href="$classDepthFirstSolver.html" title="8&#45;puzzle exploration based on a depth&#45;first search strategy " alt="" coords="305,402,445,509"/>
+<area shape="rect" id="node5" href="$classGreedySolver.html" title="Implementation of a greedy exploration algorithm for the 8&#45;puzzle game. " alt="" coords="469,395,598,516"/>
+<area shape="rect" id="node6" href="$classHillClimbingSolver.html" title="Implementation of a hill&#45;climbing optimization algorithm for the 8&#45;puzzle. " alt="" coords="623,380,780,531"/>
+<area shape="rect" id="node7" href="$classMonteCarloSolver.html" title="Memoryless solver that randomly searches the state space. " alt="" coords="804,402,951,509"/>
+</map>

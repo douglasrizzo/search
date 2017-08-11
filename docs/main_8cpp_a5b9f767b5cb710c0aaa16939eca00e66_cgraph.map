@@ -1,0 +1,5 @@
+<map id="testStateTransitions" name="testStateTransitions">
+<area shape="rect" id="node2" href="$classGameState.html#a1a5a65954a51e691971f626dcb9e0f40" title="Checks whether an action is valid for this state. " alt="" coords="403,5,537,32"/>
+<area shape="rect" id="node4" href="$classGameState.html#a0999d7e2a8ada07f008663ca85930c79" title="Creates a new state based on a given previous state and applying an action to it. ..." alt="" coords="192,56,355,83"/>
+<area shape="rect" id="node3" href="$classGameState.html#ab769bcbb1102f37bf943b207d57ed1fe" title="Finds the position of a tile in the board. " alt="" coords="585,31,703,57"/>
+</map>

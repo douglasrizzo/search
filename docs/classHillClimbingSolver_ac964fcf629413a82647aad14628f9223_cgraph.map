@@ -1,0 +1,4 @@
+<map id="HillClimbingSolver::compare" name="HillClimbingSolver::compare">
+<area shape="rect" id="node2" href="$classManhattan.html#a3160ab4be17834ebe0ffc1b2c3a39a80" title="Calculates the heuristic value for a state. " alt="" coords="183,13,297,39"/>
+<area shape="rect" id="node3" href="$classGameState.html#ac331f87dcabb71ca7a9d4c316b384a14" title="GameState::getDimension" alt="" coords="345,13,521,39"/>
+</map>

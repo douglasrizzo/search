@@ -1,0 +1,5 @@
+<map id="testGoalCreation" name="testGoalCreation">
+<area shape="rect" id="node2" href="$classGame.html#ad3adcd1c4d46c6412e1fd2958bb2f72b" title="Creates a game representation and keeps a GameState of the goal state. " alt="" coords="173,31,273,57"/>
+<area shape="rect" id="node3" href="$classGameState.html#a4fa0a2bf50315c4a35a3890a0adcee5c" title="Default constructor, everything starts as 0 or NULL. " alt="" coords="341,5,504,32"/>
+<area shape="rect" id="node4" href="$classGameState.html#a6fab869a6c4f80df3837849b8252aa1d" title="GameState::setRepresentation" alt="" coords="321,56,524,83"/>
+</map>

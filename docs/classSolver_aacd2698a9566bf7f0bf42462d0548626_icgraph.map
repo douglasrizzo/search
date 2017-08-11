@@ -1,0 +1,10 @@
+<map id="Solver::solve" name="Solver::solve">
+<area shape="rect" id="node2" href="$classSolver.html#a65544f792e0849efd30d5a5d117497fc" title="Solver::visit" alt="" coords="198,5,289,32"/>
+<area shape="rect" id="node3" href="$classSolver.html#a2936d1e3bf36dbcc6e841c3a0b82fa9d" title="End the search, generating the steps from the initial state to the goal. " alt="" coords="179,56,308,83"/>
+<area shape="rect" id="node4" href="$classSolver.html#a6f9dd6adcf27bf08cd8c7b509960b5d3" title="Solver::getSecondsToSolve" alt="" coords="152,107,335,133"/>
+<area shape="rect" id="node5" href="$classSolver.html#a1a582ce69bec9b0d14d9511b4e1fdad3" title="Solver::getVisitedNodes" alt="" coords="162,157,325,184"/>
+<area shape="rect" id="node6" href="$classSolver.html#a0a016aa9b5754015245f45c30d6059c0" title="Solver::getMaxDepth" alt="" coords="171,208,316,235"/>
+<area shape="rect" id="node7" href="$classSolver.html#a62b67e57126fed7459c591fac64278ad" title="Solver::getSolutionDepth" alt="" coords="160,259,327,285"/>
+<area shape="rect" id="node8" href="$classSolver.html#aabb706f4725c7f837ddfd9c515d7803a" title="Solver::isSolved" alt="" coords="185,309,302,336"/>
+<area shape="rect" id="node9" href="$classSolver.html#a9dfe7ae9ce617e8a6398be34284c907a" title="Solver::Solver" alt="" coords="191,360,295,387"/>
+</map>

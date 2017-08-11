@@ -1,0 +1,11 @@
+<map id="include/Game.hpp" name="include/Game.hpp">
+<area shape="rect" id="node2" href="$Solver_8hpp.html" title="include/Solver.hpp" alt="" coords="569,80,697,107"/>
+<area shape="rect" id="node10" href="$Heuristic_8hpp.html" title="include/Heuristic.hpp" alt="" coords="721,80,865,107"/>
+<area shape="rect" id="node3" href="$AStarSolver_8hpp.html" title="include/AStarSolver.hpp" alt="" coords="442,155,603,181"/>
+<area shape="rect" id="node5" href="$DepthFirstSolver_8hpp.html" title="include/DepthFirstSolver.hpp" alt="" coords="5,155,195,181"/>
+<area shape="rect" id="node6" href="$BreadthFirstSolver_8hpp.html" title="include/BreadthFirstSolver.hpp" alt="" coords="219,155,419,181"/>
+<area shape="rect" id="node7" href="$GreedySolver_8hpp.html" title="include/GreedySolver.hpp" alt="" coords="628,155,799,181"/>
+<area shape="rect" id="node8" href="$HillClimbingSolver_8hpp.html" title="include/HillClimbingSolver.hpp" alt="" coords="823,155,1022,181"/>
+<area shape="rect" id="node9" href="$MonteCarloSolver_8hpp.html" title="include/MonteCarloSolver.hpp" alt="" coords="1046,155,1242,181"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title="test/main.cpp" alt="" coords="567,229,668,256"/>
+</map>
